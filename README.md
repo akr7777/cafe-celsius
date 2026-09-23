@@ -69,4 +69,3 @@ use the `<Button />` component in your project:
 `import { Button } from "@/components/ui/button";`
 
 more [shadcn/ui components](https://ui.shadcn.com/docs/components/accordion)
-

@@ -1,16 +1,19 @@
-import { Counter } from "./Counter.js";
+import { useTranslation } from "react-i18next";
+import { Badge } from "@/components/ui/badge";
+import { Logo } from "@/components/Logo";
 
+// Placeholder Accueil — the full page (concept pillars, temperature scale,
+// origins, café de la semaine, engagements, newsletter) is built in stage 2.
 export default function Page() {
+  const { t } = useTranslation();
+
   return (
-    <>
-      <h1>My Vike app</h1>
-      <p>This page is:</p>
-      <ul>
-        <li>Rendered to HTML.</li>
-        <li>
-          Interactive. <Counter />
-        </li>
-      </ul>
-    </>
+    <section className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 py-24 text-center">
+      <Badge variant="secondary">{t("common.openingSoon")}</Badge>
+      <h1>
+        <Logo className="text-5xl sm:text-6xl" />
+      </h1>
+      <p className="text-muted-foreground text-lg">{t("home.heroSubtitle")}</p>
+    </section>
   );
 }

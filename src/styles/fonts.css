@@ -1,0 +1,25 @@
+/*
+ * Self-hosted fonts (@fontsource/*, no external font CDN).
+ *
+ * Latin glyphs come from Montserrat (headings) and Inter (body text); neither
+ * covers Armenian, so Noto Sans Armenian is layered in as a fallback for the
+ * /hy locale. Only its "armenian" subset is imported — each @font-face below
+ * carries a `unicode-range`, so the browser only ever downloads the Armenian
+ * files when it actually renders Armenian characters, and the Latin locales
+ * never pay for them.
+ */
+@import "@fontsource/montserrat/700.css";
+@import "@fontsource/montserrat/800.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/noto-sans-armenian/armenian-400.css";
+@import "@fontsource/noto-sans-armenian/armenian-500.css";
+@import "@fontsource/noto-sans-armenian/armenian-600.css";
+@import "@fontsource/noto-sans-armenian/armenian-700.css";
+@import "@fontsource/noto-sans-armenian/armenian-800.css";
+
+:root {
+  --font-heading: "Montserrat", "Noto Sans Armenian", sans-serif;
+  --font-body: "Inter", "Noto Sans Armenian", sans-serif;
+}

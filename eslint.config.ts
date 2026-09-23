@@ -1,4 +1,5 @@
 import eslint from "@eslint/js";
+import prettier from "eslint-config-prettier";
 import react from "eslint-plugin-react";
 import globals from "globals";
 import tseslint, { type ConfigArray } from "typescript-eslint";
@@ -55,4 +56,5 @@ export default tseslint.config(
     },
   } as ConfigArray[number],
   react.configs.flat["jsx-runtime"] as ConfigArray[number],
+  prettier,
 );

@@ -5,5 +5,5 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [vike(), react(), tailwindcss()],
-  resolve: { alias: { "@": new URL("./", import.meta.url).pathname } },
+  resolve: { alias: { "@": new URL("./src", import.meta.url).pathname } },
 });

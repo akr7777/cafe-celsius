@@ -48,6 +48,13 @@ jspm_packages/
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
+# pnpm
+pnpm-debug.log*
+.pnpm-store/
+
+# ТЗ и рабочие материалы владельца — не должны попадать в репозиторий
+--spec--/
+
 # TypeScript cache
 *.tsbuildinfo
 
