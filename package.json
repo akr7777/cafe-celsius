@@ -13,6 +13,7 @@
     "shadcn": "pnpm dlx shadcn@latest",
     "generate:images": "node scripts/generate-images.mjs",
     "generate:image-prompts": "node scripts/generate-image-prompts.mjs",
+    "generate:gemini-prompt": "node scripts/generate-gemini-prompt.mjs",
     "check:content": "node scripts/check-forbidden-content.mjs",
     "prod": "docker compose up -d --build"
   },

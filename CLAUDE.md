@@ -17,6 +17,7 @@ Content rules that shape a lot of the code (menu data, forms, footer, About page
 - `pnpm shadcn add <component>` — add a shadcn/ui component (already configured for `new-york` style, see `components.json`)
 - `pnpm generate:images` — regenerate the favicon PNGs and `public/og-image.png` from their SVG sources (`public/favicon.svg`, `scripts/assets/og-image.svg`); run by hand after editing a source, not part of `pnpm build`
 - `pnpm generate:image-prompts` — regenerate `docs/image-prompts.md` from `src/content/{menu,academie,boutique}.ts`, same "run by hand" deal
+- `pnpm generate:gemini-prompt` — regenerate `docs/gemini-image-prompt.md`, a single Gemini-ready prompt (shared style + numbered manifest) covering the same set of images, same source, same "run by hand" deal
 - `pnpm prisma:generate` / `pnpm prisma:studio` — present for a future backend, unused by the site itself (see below)
 
 No test framework is configured yet.
