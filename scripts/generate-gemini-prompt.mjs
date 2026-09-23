@@ -40,36 +40,40 @@ function boutiqueLine(item) {
   return `public/images/menu/${item.id}.webp — ${item.name.en}: ${item.description.en}`;
 }
 
-const pageShots = [
-  {
-    file: "public/images/pages/hero.webp",
-    ratio: "16:9",
-    text: "Wide editorial shot of a minimalist specialty coffee bar counter, a barista's hands mid-pour out of focus in the background, no visible faces.",
-  },
-  {
-    file: "public/images/pages/interior.webp",
-    ratio: "4:3",
-    text: "Interior of a minimalist specialty coffee shop, warm wood and ceramics, large windows, no people.",
-  },
+// Actually rendered on the Accueil page right now (pages/index/+Page.tsx).
+const originShots = [
   {
     file: "public/images/pages/bresil.webp",
-    ratio: "4:3",
     text: "Green coffee beans with a small burlap sample bag, evoking Brazil.",
   },
   {
     file: "public/images/pages/ethiopie.webp",
-    ratio: "4:3",
     text: "Green coffee beans with dried coffee cherries, evoking Ethiopia.",
   },
   {
     file: "public/images/pages/vietnam.webp",
-    ratio: "4:3",
     text: "Green robusta beans with a traditional phin filter, evoking Vietnam.",
+  },
+];
+
+// Prepared for later — no page currently calls <ProductImage> for these ids,
+// so generating them has no visible effect on the site yet. Kept last on
+// purpose: with Gemini generating one image per turn, every other item on
+// this list is worth more of your first attempts than these three.
+const futureShots = [
+  {
+    file: "public/images/pages/hero.webp",
+    ratio: "16:9",
+    text: "Wide editorial shot of a minimalist specialty coffee bar counter, a barista's hands mid-pour out of focus in the background, no visible faces. Not wired into any page yet.",
+  },
+  {
+    file: "public/images/pages/interior.webp",
+    text: "Interior of a minimalist specialty coffee shop, warm wood and ceramics, large windows, no people. Not wired into any page yet.",
   },
   {
     file: "public/images/pages/portrait-placeholder.webp",
     ratio: "3:4",
-    text: "Neutral placeholder: a softly lit empty chair and small table with a coffee cup, no person.",
+    text: "Neutral placeholder: a softly lit empty chair and small table with a coffee cup, no person. Not wired into any page yet — /a-propos currently shows a plain icon instead.",
   },
 ];
 
@@ -86,7 +90,11 @@ lines.push(
 );
 lines.push("");
 lines.push(
-  "⚠️ **En pratique, Gemini ne renvoie souvent qu'une poignée d'images par réponse**, pas les 72 d'un coup. Si la réponse s'arrête en cours de liste, renvoyer simplement *« continue »* / *« suite »* pour obtenir les images suivantes, ou reprendre une seule ligne numérotée à la fois dans un nouveau message — le prompt reste valable à l'unité. Chaque image générée s'enregistre en WebP, ≤ 250 Ko, sous le chemin indiqué en tête de ligne (1600×1200 pour le format 4:3) ; `<ProductImage>` (`src/components/ProductImage.tsx`) la détecte automatiquement, aucune autre modification n'est nécessaire.",
+  "⚠️ **Dans les faits, Gemini génère une image à la fois, pas les 72 d'un coup** — ce n'est pas un incident, c'est le fonctionnement normal. Envoyer le prompt une première fois (il répond avec l'image n°1), puis relancer juste *« suite »* / *« continue »* à chaque tour pour passer à la suivante : Gemini garde la liste numérotée en mémoire dans la conversation, pas besoin de tout recoller. Compter environ un message par image. La liste est ordonnée par priorité (voir plus bas) pour que les premiers tours produisent ce qui compte le plus.",
+);
+lines.push("");
+lines.push(
+  "Chaque image générée s'enregistre en WebP, ≤ 250 Ko, sous le chemin indiqué en tête de ligne (1600×1200 pour le format 4:3) ; `<ProductImage>` (`src/components/ProductImage.tsx`) la détecte automatiquement, aucune autre modification n'est nécessaire.",
 );
 lines.push("");
 lines.push("## Prompt à copier");
@@ -108,13 +116,26 @@ lines.push("- 3/4 camera angle, shallow depth of field, unless another angle is 
 lines.push("- Aspect ratio 4:3 unless noted otherwise next to an item");
 lines.push("- Absolutely no text, no typography, no logos, no watermarks anywhere in the image");
 lines.push("");
-lines.push(
-  `Generate all ${menu.length + academiePrograms.length + boutiqueItems.length + pageShots.length} images below, in order, one per number:`,
-);
+const featured = menu.find((item) => item.featured);
+const menuRest = menu.filter((item) => !item.featured);
+const total =
+  menu.length + academiePrograms.length + boutiqueItems.length + originShots.length + futureShots.length;
+
+lines.push(`Generate all ${total} images below, in order, one per number. The list is priority-ordered:`);
 lines.push("");
 
+lines.push("— Priority: visible on the homepage right now —");
+if (featured) {
+  n++;
+  lines.push(`${n}. ${menuLine(featured)}`);
+}
+for (const shot of originShots) {
+  n++;
+  lines.push(`${n}. ${shot.file} (aspect ratio 4:3) — ${shot.text}`);
+}
+lines.push("");
 lines.push("— La Carte —");
-for (const item of menu) {
+for (const item of menuRest) {
   n++;
   lines.push(`${n}. ${menuLine(item)}`);
 }
@@ -131,10 +152,10 @@ for (const item of boutiqueItems) {
   lines.push(`${n}. ${boutiqueLine(item)}`);
 }
 lines.push("");
-lines.push("— Pages —");
-for (const shot of pageShots) {
+lines.push("— Not used on the site yet, lowest priority —");
+for (const shot of futureShots) {
   n++;
-  lines.push(`${n}. ${shot.file} (aspect ratio ${shot.ratio}) — ${shot.text}`);
+  lines.push(`${n}. ${shot.file} (aspect ratio ${shot.ratio ?? "4:3"}) — ${shot.text}`);
 }
 lines.push("````");
 lines.push("");
