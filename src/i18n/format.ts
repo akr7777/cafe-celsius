@@ -10,3 +10,20 @@ export function formatPrice(value: number, locale: Locale): string {
 export function formatTitle(dict: Dict, pageTitle: string): string {
   return dict.meta.titleTemplate.replace("%s", pageTitle);
 }
+
+/**
+ * Formats a menu/academie item's price per §7: a range renders as
+ * "6,00 € – 9,00 €", `null` as `onRequestLabel` (typically
+ * `t("common.priceOnRequest")`), and `supplement: true` prefixes a single
+ * value with "+" (the plant-based-milk add-on, "+0,50 €").
+ */
+export function formatPriceValue(
+  price: number | [number, number] | null,
+  locale: Locale,
+  onRequestLabel: string,
+  options?: { supplement?: boolean },
+): string {
+  if (price === null) return onRequestLabel;
+  if (Array.isArray(price)) return `${formatPrice(price[0], locale)} – ${formatPrice(price[1], locale)}`;
+  return (options?.supplement ? "+" : "") + formatPrice(price, locale);
+}

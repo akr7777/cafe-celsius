@@ -7,7 +7,7 @@ import { locales, localeDefault, type Locale } from "./locales";
 
 export type { Dict, Locale };
 export { locales, localeDefault, localeLabels, isLocale, stripLocaleFromPath, localizePath } from "./locales";
-export { formatPrice, formatTitle } from "./format";
+export { formatPrice, formatPriceValue, formatTitle } from "./format";
 
 const resources = {
   fr: { translation: fr },
