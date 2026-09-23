@@ -29,9 +29,9 @@ export default function Page() {
       <p className="text-muted-foreground mt-3 max-w-2xl">{t("carte.intro")}</p>
 
       <Tabs defaultValue={menuCategories[0]} className="mt-10">
-        <TabsList className="w-full justify-start overflow-x-auto">
+        <TabsList className="group-data-[orientation=horizontal]/tabs:h-auto w-full justify-start gap-1 overflow-x-auto p-1.5">
           {menuCategories.map((category) => (
-            <TabsTrigger key={category} value={category}>
+            <TabsTrigger key={category} value={category} className="h-auto shrink-0 px-4 py-2.5 text-base">
               {t(categoryDictKey[category])}
             </TabsTrigger>
           ))}
