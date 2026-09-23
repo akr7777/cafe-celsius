@@ -8,6 +8,7 @@ import { locales, localeDefault, type Locale } from "./locales";
 export type { Dict, Locale };
 export { locales, localeDefault, localeLabels, isLocale, stripLocaleFromPath, localizePath } from "./locales";
 export { formatPrice, formatPriceValue, formatTitle } from "./format";
+export { getPageMeta } from "./pageMeta";
 
 const resources = {
   fr: { translation: fr },

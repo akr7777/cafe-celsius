@@ -50,6 +50,43 @@ export const fr = {
     defaultTitle: "CELSIUS — Café de spécialité, Paris",
     defaultDescription:
       "CELSIUS, café de spécialité à Paris : carte, académie du café et boutique. Ouverture prochaine.",
+    pages: {
+      carte: {
+        title: "La Carte",
+        description:
+          "Découvrez la carte CELSIUS : espresso, dégustation, boissons froides, signatures, douceurs maison et salé. Café de spécialité à Paris, ouverture prochaine.",
+      },
+      academie: {
+        title: "L'Académie",
+        description:
+          "L'Académie CELSIUS : cupping, méthodes douces, latte art et formation en ligne. Dégustations et ateliers pour approfondir sa culture du café à Paris.",
+      },
+      boutique: {
+        title: "Boutique",
+        description:
+          "La boutique CELSIUS : café en grains, matériel Hario et Fellow, merch et livres. Une sélection lifestyle à découvrir à l'ouverture, à Paris.",
+      },
+      aPropos: {
+        title: "À propos",
+        description:
+          "CELSIUS, café de spécialité à Paris : notre histoire, notre approche du goût et Victoriia Nikolenko, fondatrice et gérante du projet.",
+      },
+      contact: {
+        title: "Contact",
+        description:
+          "Contactez CELSIUS, café de spécialité à Paris. Adresse communiquée prochainement — ouverture à venir.",
+      },
+      mentionsLegales: {
+        title: "Mentions légales",
+        description:
+          "Mentions légales du site CELSIUS : éditeur, directrice de publication, hébergement et propriété intellectuelle.",
+      },
+      confidentialite: {
+        title: "Confidentialité",
+        description:
+          "Politique de confidentialité du site CELSIUS : aucun cookie, aucun traceur, et vos droits sur vos données.",
+      },
+    },
   },
   forms: {
     toastSuccess: "Merci ! Ce service sera disponible à l'ouverture.",

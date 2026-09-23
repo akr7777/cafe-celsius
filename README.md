@@ -1,71 +1,59 @@
-Generated with [vike.dev/new](https://vike.dev/new) ([version 681](https://www.npmjs.com/package/create-vike/v/0.0.681)) using this command:
+# CELSIUS
+
+Site vitrine de CELSIUS, café de spécialité à Paris (ouverture prochaine) : concept, carte, académie du café et boutique, en français, anglais et arménien.
+
+Le site est **entièrement statique** : à la compilation, chaque page est générée à l'avance dans les trois langues (`dist/client/fr/…`, `/en/…`, `/hy/…`) et le résultat se déploie sur n'importe quel hébergeur de fichiers statiques — aucun serveur n'est nécessaire pour le servir.
+
+## Démarrage
 
 ```sh
-npm create vike@latest --- --react --shadcn-ui --tailwindcss --express --postgres --prisma --docker --eslint --shadcnUi
+pnpm install
+cp .env.example .env   # à ajuster, voir ci-dessous
+pnpm dev                # http://localhost:3000/fr/, /en/, /hy/
 ```
 
-## Contents
+```sh
+pnpm build               # génère dist/client (site statique)
+pnpm preview              # build, puis sert dist/client via le serveur Vike
+```
 
-- [Vike](#vike)
-  - [Plus files](#plus-files)
-  - [Routing](#routing)
-  - [SSR](#ssr)
-  - [HTML Streaming](#html-streaming)
-- [shadcn/ui](#shadcnui)
-  - [Configuration](#configuration)
-  - [Add Components to Your Project](#add-components-to-your-project)
+`pnpm preview` passe par le serveur Vike, ce qui n'est **pas** représentatif d'un hébergement statique réel (voir la note dans `CLAUDE.md`). Pour vérifier le rendu final tel qu'il sera vraiment servi, lancer un serveur statique basique sur `dist/client`, par exemple :
 
-## Vike
+```sh
+cd dist/client && python3 -m http.server 8080
+```
 
-This app is ready to start. It's powered by [Vike](https://vike.dev) and [React](https://react.dev/learn).
+### Variables d'environnement
 
-### Plus files
+Voir `.env.example`. `PUBLIC_ENV__SITE_URL` est l'adresse absolue du site (sans slash final) : elle sert à générer le `sitemap.xml`, les balises `canonical`/`hreflang`/Open Graph à la compilation. Le domaine n'est pas encore choisi — la valeur par défaut est un placeholder à remplacer avant la mise en ligne.
 
-[The + files are the interface](https://vike.dev/config) between Vike and your code.
+## Où changer quoi
 
-- [`+config.ts`](https://vike.dev/settings) — Settings (e.g. `<title>`)
-- [`+Page.tsx`](https://vike.dev/Page) — The `<Page>` component
-- [`+data.ts`](https://vike.dev/data) — Fetching data (for your `<Page>` component)
-- [`+Layout.tsx`](https://vike.dev/Layout) — The `<Layout>` component (wraps your `<Page>` components)
-- [`+Head.tsx`](https://vike.dev/Head) - Sets `<head>` tags
-- [`/pages/_error/+Page.tsx`](https://vike.dev/error-page) — The error page (rendered when an error occurs)
-- [`+onPageTransitionStart.ts`](https://vike.dev/onPageTransitionStart) and `+onPageTransitionEnd.ts` — For page transition animations
+| Besoin                                                              | Fichier(s)                                                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Couleurs, thème clair/sombre                                        | `src/styles/theme.css` — seul fichier où une couleur peut être écrite en dur ; tout le reste du code référence les tokens (`bg-primary`, `text-muted-foreground`, …)                                                                                                     |
+| Polices                                                             | `src/styles/fonts.css`                                                                                                                                                                                                                                                   |
+| Carte, académie, boutique (prix, descriptions, tags)                | `src/content/menu.ts`, `src/content/academie.ts`, `src/content/boutique.ts` — chaque texte a ses trois traductions `{ fr, en, hy }` directement dans l'objet                                                                                                             |
+| Textes d'interface (nav, boutons, formulaires, pages légales, etc.) | `src/i18n/dictionaries/{fr,en,hy}.ts` — `fr.ts` fait foi ; le typage (`Dict = typeof fr`) empêche de committer une traduction incomplète                                                                                                                                 |
+| Photos des produits/pages                                           | `public/images/menu/{id}.webp` et `public/images/pages/{id}.webp` (id = celui du produit/programme dans `src/content/*.ts`) — tant qu'un fichier n'existe pas, un visuel de remplacement (icône + fond) s'affiche automatiquement, sans jamais générer de requête cassée |
+| Prompts pour générer ces photos par IA                              | `docs/image-prompts.md` (régénéré par `pnpm generate:image-prompts` à partir du contenu réel)                                                                                                                                                                            |
+| Favicon / image de partage (Open Graph)                             | Sources SVG dans `public/favicon.svg` et `scripts/assets/og-image.svg`, PNG régénérés par `pnpm generate:images`                                                                                                                                                         |
+| Formulaires (newsletter, inscription académie, contact)             | `src/lib/forms.ts` — point d'entrée unique, actuellement une maquette qui ne transmet ni ne stocke rien (voir le commentaire `TODO(backend)`)                                                                                                                            |
 
-### Routing
+## Scripts
 
-[Vike's built-in router](https://vike.dev/routing) lets you choose between:
+| Commande                                       | Effet                                                                                              |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `pnpm dev`                                     | serveur de développement                                                                           |
+| `pnpm build`                                   | compile le site statique + `sitemap.xml`/`robots.txt` + la redirection statique de `/` vers `/fr/` |
+| `pnpm preview`                                 | build puis aperçu via le serveur Vike (voir note plus haut)                                        |
+| `pnpm lint` / `pnpm typecheck` / `pnpm format` | qualité de code                                                                                    |
+| `pnpm shadcn add <composant>`                  | ajoute un composant shadcn/ui (style _new-york_, voir `components.json`)                           |
+| `pnpm generate:images`                         | régénère les PNG du favicon et de l'image Open Graph depuis leurs sources SVG                      |
+| `pnpm generate:image-prompts`                  | régénère `docs/image-prompts.md` depuis `src/content/*.ts`                                         |
 
-- [Filesystem Routing](https://vike.dev/filesystem-routing) (the URL of a page is determined based on where its `+Page.jsx` file is located on the filesystem)
-- [Route Strings](https://vike.dev/route-string)
-- [Route Functions](https://vike.dev/route-function)
+## Notes
 
-### SSR
-
-SSR is enabled by default. You can [disable it](https://vike.dev/ssr) for all or specific pages.
-
-### HTML Streaming
-
-You can [enable/disable HTML streaming](https://vike.dev/stream) for all or specific pages.
-
-## shadcn/ui
-
-Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.
-
-### Configuration
-
-see [shadcn/ui theming](https://ui.shadcn.com/docs/theming)
-
-Base Configuration can be found in `components.json` file.
-
-> \[!NOTE]
-> changes to the `components.json` file **will not** be reflected in existing components. Only new components will be affected.
-
-### Add Components to Your Project
-
-**Example:** add a component to your project.
-`npm run shadcn add button`
-
-use the `<Button />` component in your project:
-`import { Button } from "@/components/ui/button";`
-
-more [shadcn/ui components](https://ui.shadcn.com/docs/components/accordion)
+- La traduction arménienne (`src/i18n/dictionaries/hy.ts`) est passée par une IA de traduction et porte un commentaire `TODO: вычитка носителем языка` en tête de fichier : elle doit être relue par une personne de langue maternelle avant la mise en ligne définitive.
+- Aucun backend n'est branché pour l'instant (le site est 100 % statique), mais Express/Prisma/Docker restent en place dans le dépôt pour accueillir une future API sans avoir à tout reconfigurer.
+- Pour les détails d'architecture plus fins (routage i18n, pièges déjà rencontrés, etc.), voir `CLAUDE.md`.

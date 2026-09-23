@@ -49,6 +49,43 @@ export const en: Dict = {
     defaultTitle: "CELSIUS — Specialty coffee, Paris",
     defaultDescription:
       "CELSIUS, a specialty coffee shop in Paris: menu, coffee academy and shop. Opening soon.",
+    pages: {
+      carte: {
+        title: "Menu",
+        description:
+          "Explore the CELSIUS menu: espresso, tastings, cold drinks, signatures, homemade sweets and savoury dishes. Specialty coffee in Paris, opening soon.",
+      },
+      academie: {
+        title: "The Academy",
+        description:
+          "The CELSIUS Academy: cupping, slow brewing, latte art and an online course. Tastings and workshops to go deeper into coffee culture in Paris.",
+      },
+      boutique: {
+        title: "Shop",
+        description:
+          "The CELSIUS shop: whole beans, Hario and Fellow gear, merch and books. A lifestyle selection to discover when we open, in Paris.",
+      },
+      aPropos: {
+        title: "About",
+        description:
+          "CELSIUS, a specialty coffee shop in Paris: our story, our approach to taste, and Victoriia Nikolenko, the project's founder and manager.",
+      },
+      contact: {
+        title: "Contact",
+        description:
+          "Contact CELSIUS, a specialty coffee shop in Paris. Address to be announced soon — opening coming up.",
+      },
+      mentionsLegales: {
+        title: "Legal notice",
+        description:
+          "Legal notice for the CELSIUS website: publisher, publication director, hosting and intellectual property.",
+      },
+      confidentialite: {
+        title: "Privacy",
+        description:
+          "CELSIUS website privacy policy: no cookies, no trackers, and your rights over your data.",
+      },
+    },
   },
   forms: {
     toastSuccess: "Thank you! This service will be available when we open.",

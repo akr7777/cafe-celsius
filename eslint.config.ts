@@ -56,5 +56,14 @@ export default tseslint.config(
     },
   } as ConfigArray[number],
   react.configs.flat["jsx-runtime"] as ConfigArray[number],
+  {
+    // Build-tooling scripts (not app code): plain Node, no React/browser globals.
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
   prettier,
 );

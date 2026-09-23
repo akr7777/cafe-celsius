@@ -37,7 +37,8 @@ export default function Page() {
               <Badge variant="outline" className="w-fit">
                 {t(categoryDictKey[item.category])}
               </Badge>
-              <h3 className="font-heading font-semibold">{item.name[l]}</h3>
+              {/* Not a heading — see MenuItemCard for why product-card titles aren't h3s here. */}
+              <p className="font-heading font-semibold">{item.name[l]}</p>
               <p className="text-muted-foreground text-sm">{item.description[l]}</p>
               <p className="text-primary mt-1 text-sm font-medium">{t("boutique.availableAtOpening")}</p>
             </CardContent>

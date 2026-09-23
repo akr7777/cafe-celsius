@@ -45,7 +45,8 @@ export default function Page() {
               className="rounded-none"
             />
             <CardContent className="flex flex-col gap-2 px-4 pt-1 pb-4">
-              <h3 className="font-heading font-semibold">{program.name[l]}</h3>
+              {/* Not a heading — keeps the page outline at h1 → h2 (FAQ), see MenuItemCard. */}
+              <p className="font-heading font-semibold">{program.name[l]}</p>
               <p className="text-muted-foreground text-sm">{program.description[l]}</p>
               <div className="mt-1 flex flex-wrap items-center gap-2 text-sm">
                 {program.duration && (

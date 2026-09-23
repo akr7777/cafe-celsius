@@ -23,7 +23,8 @@ export function MenuItemCard({ item }: { item: MenuItem }) {
       />
       <CardContent className="flex flex-col gap-2 px-4 pt-1 pb-4">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="font-heading font-semibold">{item.name[l]}</h3>
+          {/* Not a heading: a catalog of ~55 items shouldn't turn into 55 h3s in the page outline. */}
+          <p className="font-heading font-semibold">{item.name[l]}</p>
           {item.tempC !== undefined && (
             <Badge variant="outline" className="shrink-0">
               {item.tempC} °C

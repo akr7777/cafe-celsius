@@ -50,6 +50,43 @@ export const hy: Dict = {
     defaultTitle: "CELSIUS — Specialty coffee, Փարիզ",
     defaultDescription:
       "CELSIUS՝ specialty coffee սրճարան Փարիզում. ճաշացանկ, սուրճի ակադեմիա և խանութ։ Շուտով կբացվի։",
+    pages: {
+      carte: {
+        title: "Ճաշացանկ",
+        description:
+          "Բացահայտեք CELSIUS-ի ճաշացանկը՝ էսպրեսո, համտես, սառը խմիչքներ, ստորագրված ըմպելիքներ, տնական աղանդեր և աղի ուտեստներ։ Specialty coffee Փարիզում, շուտով կբացվի։",
+      },
+      academie: {
+        title: "Ակադեմիա",
+        description:
+          "CELSIUS Ակադեմիա՝ cupping, մեղմ եփման մեթոդներ, latte art և առցանց դասընթաց։ Համտեսներ ու արհեստանոցներ սուրճի մշակույթը խորացնելու համար Փարիզում։",
+      },
+      boutique: {
+        title: "Խանութ",
+        description:
+          "CELSIUS խանութ՝ հատիկավոր սուրճ, Hario և Fellow պարագաներ, մերչ և գրքեր։ Lifestyle ընտրանի, որը կհայտնվի բացումից հետո Փարիզում։",
+      },
+      aPropos: {
+        title: "Մեր մասին",
+        description:
+          "CELSIUS՝ specialty coffee սրճարան Փարիզում. մեր պատմությունը, համի հանդեպ մոտեցումը և Victoriia Nikolenko՝ նախագծի հիմնադիր և ղեկավար։",
+      },
+      contact: {
+        title: "Կապ",
+        description:
+          "Կապնվեք CELSIUS-ի հետ՝ specialty coffee սրճարան Փարիզում։ Հասցեն կհայտարարվի շուտով — բացումը առջևում է։",
+      },
+      mentionsLegales: {
+        title: "Իրավական տեղեկություններ",
+        description:
+          "CELSIUS կայքի իրավական տեղեկություններ՝ հրատարակող, հրապարակման տնօրեն, հոսթինգ և մտավոր սեփականություն։",
+      },
+      confidentialite: {
+        title: "Գաղտնիություն",
+        description:
+          "CELSIUS կայքի գաղտնիության քաղաքականություն՝ առանց cookie-ների, առանց հետագծիչների, և Ձեր իրավունքները Ձեր տվյալների նկատմամբ։",
+      },
+    },
   },
   forms: {
     toastSuccess: "Շնորհակալություն։ Այս ծառայությունը հասանելի կլինի բացումից հետո։",

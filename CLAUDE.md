@@ -15,6 +15,8 @@ Content rules that shape a lot of the code (menu data, forms, footer, About page
 - `pnpm preview` — build, then serve the build through Vike's own server (`vike preview`). This is **not** representative of the real static host: it re-runs the routing/trailing-slash logic below, which a plain static file server does not do. To check how the site will actually behave once deployed, serve `dist/client` with a bare static server (e.g. `python3 -m http.server` from that directory) instead.
 - `pnpm lint` / `pnpm typecheck` / `pnpm format` (`format:check` for CI-style checking, no write)
 - `pnpm shadcn add <component>` — add a shadcn/ui component (already configured for `new-york` style, see `components.json`)
+- `pnpm generate:images` — regenerate the favicon PNGs and `public/og-image.png` from their SVG sources (`public/favicon.svg`, `scripts/assets/og-image.svg`); run by hand after editing a source, not part of `pnpm build`
+- `pnpm generate:image-prompts` — regenerate `docs/image-prompts.md` from `src/content/{menu,academie,boutique}.ts`, same "run by hand" deal
 - `pnpm prisma:generate` / `pnpm prisma:studio` — present for a future backend, unused by the site itself (see below)
 
 No test framework is configured yet.
@@ -35,7 +37,7 @@ This is the part most likely to surprise you, spread across a few files that nee
 - **Every internal URL has a trailing slash** (`/fr/carte/`, not `/fr/carte`) via `localizePath()` in `src/i18n/locales.ts`, used by `<Link>`, `<LanguageSwitcher>`, and the hreflang tags in `pages/+Head.tsx`. This matches the prerendered output shape (`dist/client/fr/carte/index.html`) and is what lets a plain static file server resolve the URL without "clean URL" support. Don't build hrefs by hand — use `localizePath`/`<Link>` or a same-locale link will end up one slash off from what actually got built.
 - `pageContext.urlOriginal` is what's reliable inside components for "the current URL" — `pageContext.urlPathname` is computed once before `onPrerenderStart` runs and goes stale for the locale-tripled pages (this bit us once; don't reintroduce it).
 - Translation strings: `src/i18n/dictionaries/{fr,en,hy}.ts`, wired through `react-i18next` (one `i18next` instance per locale, cached in `src/i18n/index.ts`, provided via `<I18nextProvider>` in `pages/+Layout.tsx`). `fr.ts` is the source of truth — `type Dict = typeof fr` (no `as const`, or every translation would need the exact same string as French) makes a missing or extra key in `en.ts`/`hy.ts` a compile error. `src/i18n/i18next.d.ts` gives `useTranslation()`'s `t()` the same compile-time key checking. `hy.ts` is machine-translated; it's flagged with a `TODO: вычитка носителем языка` comment at the top pending native-speaker review — don't remove that comment when editing the file.
-- Menu/academie/boutique content data carries its own `{ fr, en, hy }` per field (`L10n` in `src/content/types.ts`) rather than going through the UI-string dictionaries — see `src/content/{menu,academie,boutique}.ts`. Adding an item there needs no dict change; adding new *interface* copy does, in all three dictionary files at once (the `Dict` type check forces this).
+- Menu/academie/boutique content data carries its own `{ fr, en, hy }` per field (`L10n` in `src/content/types.ts`) rather than going through the UI-string dictionaries — see `src/content/{menu,academie,boutique}.ts`. Adding an item there needs no dict change; adding new _interface_ copy does, in all three dictionary files at once (the `Dict` type check forces this).
 
 ### Content & forms
 
@@ -51,6 +53,16 @@ This is the part most likely to surprise you, spread across a few files that nee
 ### shadcn/ui
 
 Generated components live in `src/components/ui/`. This shadcn CLI generation imports `cn` from a package literally named `cn` by default — that import gets swapped to `@/lib/utils` by hand after `pnpm shadcn add`, to keep one class-merging implementation instead of two. Do the same after adding a new component. `sonner.tsx` was also hand-edited to drop the `next-themes` dependency it's normally generated with (unused: no theme toggle here, see above) — reapply that trim if `add` regenerates it.
+
+### Accessibility
+
+Card/item titles in `MenuItemCard` and on `/academie` and `/boutique` are deliberately `<p>`, not `<h3>` — those pages have no intervening `<h2>` between the page `<h1>` and the card grid, so making each of the (up to 55) item names a heading would skip a level and turn the outline into heading-soup. If you add a real `<h2>` section heading above a grid, it's fine to promote its cards back to `<h3>`.
+
+### SEO
+
+- `src/i18n/pageMeta.ts` (`getPageMeta(pathWithoutLocale, dict)`) is the single source for a page's `<title>`/description, keyed off `dict.meta.pages`. Both a page's own `+data.ts` (sets the real `<title>`/`<meta description>` via `useConfig()`) and `pages/+Head.tsx` (OG/Twitter tags) call it, so they can never disagree. **Each page needs its own `+data.ts`** calling this — there's no shared/global one: an earlier version had a root `+onBeforeRender.ts` that set a site-wide default for every page, and because it ran _after_ each page's own hook it silently clobbered every per-page title back to the default. Removed; don't recreate that pattern.
+- `scripts/write-sitemap.mjs` builds `dist/client/sitemap.xml` (with hreflang alternates) and `robots.txt` by walking the **already-prerendered** `dist/client/` tree (excluding `404.html`), not from a hand-maintained route list — it runs after `vike build` as part of `pnpm build`, so the URL list can't drift from what was actually built.
+- JSON-LD is `Organization` only (name + url) — no `CafeOrCoffeeShop`, since there's no address yet (§11 of the spec).
 
 ### Backend (not wired up, deliberately kept ready)
 
