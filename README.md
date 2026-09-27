@@ -1,6 +1,6 @@
 # CELSIUS
 
-Site vitrine de CELSIUS, café de spécialité à Paris (ouverture prochaine) : concept, carte, académie du café et boutique, en français, anglais et arménien.
+Site vitrine de CELSIUS, café de spécialité à Montpellier (ouverture prochaine) : concept, carte, académie du café et boutique, en français, anglais et arménien.
 
 Le site est **entièrement statique** : à la compilation, chaque page est générée à l'avance dans les trois langues (`dist/client/fr/…`, `/en/…`, `/hy/…`) et le résultat se déploie sur n'importe quel hébergeur de fichiers statiques — aucun serveur n'est nécessaire pour le servir.
 

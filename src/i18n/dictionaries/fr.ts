@@ -4,7 +4,7 @@
 export const fr = {
   common: {
     openingSoon: "Ouverture prochaine",
-    openingSoonParis: "Ouverture prochaine à Paris",
+    openingSoonCity: "Ouverture prochaine à Montpellier",
     skipToContent: "Aller au contenu",
     priceOnRequest: "Sur devis",
     comingSoon: "Bientôt",
@@ -26,7 +26,7 @@ export const fr = {
     close: "Fermer",
   },
   footer: {
-    tagline: "Café de spécialité · Paris",
+    tagline: "Café de spécialité · Montpellier",
     legalMentions: "Mentions légales",
     privacy: "Confidentialité",
     rights: "© {{year}} EURL CELSIUS",
@@ -47,34 +47,34 @@ export const fr = {
   },
   meta: {
     titleTemplate: "%s · CELSIUS",
-    defaultTitle: "CELSIUS — Café de spécialité, Paris",
+    defaultTitle: "CELSIUS — Café de spécialité, Montpellier",
     defaultDescription:
-      "CELSIUS, café de spécialité à Paris : carte, académie du café et boutique. Ouverture prochaine.",
+      "CELSIUS, café de spécialité à Montpellier : carte, académie du café et boutique. Ouverture prochaine.",
     pages: {
       carte: {
         title: "La Carte",
         description:
-          "Découvrez la carte CELSIUS : espresso, dégustation, boissons froides, signatures, douceurs maison et salé. Café de spécialité à Paris, ouverture prochaine.",
+          "Découvrez la carte CELSIUS : espresso, dégustation, boissons froides, signatures, douceurs maison et salé. Café de spécialité à Montpellier, ouverture prochaine.",
       },
       academie: {
         title: "L'Académie",
         description:
-          "L'Académie CELSIUS : cupping, méthodes douces, latte art et formation en ligne. Dégustations et ateliers pour approfondir sa culture du café à Paris.",
+          "L'Académie CELSIUS : cupping, méthodes douces, latte art et formation en ligne. Dégustations et ateliers pour approfondir sa culture du café à Montpellier.",
       },
       boutique: {
         title: "Boutique",
         description:
-          "La boutique CELSIUS : café en grains, matériel Hario et Fellow, merch et livres. Une sélection lifestyle à découvrir à l'ouverture, à Paris.",
+          "La boutique CELSIUS : café en grains, matériel Hario et Fellow, merch et livres. Une sélection lifestyle à découvrir à l'ouverture, à Montpellier.",
       },
       aPropos: {
         title: "À propos",
         description:
-          "CELSIUS, café de spécialité à Paris : notre histoire, notre approche du goût et Victoriia Nikolenko, fondatrice et gérante du projet.",
+          "CELSIUS, café de spécialité à Montpellier : notre histoire, notre approche du goût et Victoriia Nikolenko, fondatrice et gérante du projet.",
       },
       contact: {
         title: "Contact",
         description:
-          "Contactez CELSIUS, café de spécialité à Paris. Adresse communiquée prochainement — ouverture à venir.",
+          "Contactez CELSIUS, café de spécialité à Montpellier. Adresse communiquée prochainement — ouverture à venir.",
       },
       mentionsLegales: {
         title: "Mentions légales",
@@ -96,7 +96,7 @@ export const fr = {
   home: {
     heroCta1: "Découvrir la carte",
     heroCta2: "L'Académie",
-    heroSubtitle: "Café de spécialité · Paris",
+    heroSubtitle: "Café de spécialité · Montpellier",
     pillarsTitle: "Une idée en quatre piliers",
     pillars: {
       sommelier: {

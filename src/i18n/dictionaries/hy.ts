@@ -4,7 +4,7 @@ import type { Dict } from "./fr";
 export const hy: Dict = {
   common: {
     openingSoon: "Շուտով կբացվի",
-    openingSoonParis: "Շուտով կբացվի Փարիզում",
+    openingSoonCity: "Շուտով կբացվի Մոնպելիեում",
     skipToContent: "Անցնել բովանդակությանը",
     priceOnRequest: "Գնով՝ հարցման դեպքում",
     comingSoon: "Շուտով",
@@ -26,7 +26,7 @@ export const hy: Dict = {
     close: "Փակել",
   },
   footer: {
-    tagline: "Specialty coffee · Փարիզ",
+    tagline: "Specialty coffee · Մոնպելիե",
     legalMentions: "Իրավական տեղեկություններ",
     privacy: "Գաղտնիություն",
     rights: "© {{year}} EURL CELSIUS",
@@ -47,34 +47,34 @@ export const hy: Dict = {
   },
   meta: {
     titleTemplate: "%s · CELSIUS",
-    defaultTitle: "CELSIUS — Specialty coffee, Փարիզ",
+    defaultTitle: "CELSIUS — Specialty coffee, Մոնպելիե",
     defaultDescription:
-      "CELSIUS՝ specialty coffee սրճարան Փարիզում. ճաշացանկ, սուրճի ակադեմիա և խանութ։ Շուտով կբացվի։",
+      "CELSIUS՝ specialty coffee սրճարան Մոնպելիեում. ճաշացանկ, սուրճի ակադեմիա և խանութ։ Շուտով կբացվի։",
     pages: {
       carte: {
         title: "Ճաշացանկ",
         description:
-          "Բացահայտեք CELSIUS-ի ճաշացանկը՝ էսպրեսո, համտես, սառը խմիչքներ, ստորագրված ըմպելիքներ, տնական աղանդեր և աղի ուտեստներ։ Specialty coffee Փարիզում, շուտով կբացվի։",
+          "Բացահայտեք CELSIUS-ի ճաշացանկը՝ էսպրեսո, համտես, սառը խմիչքներ, ստորագրված ըմպելիքներ, տնական աղանդեր և աղի ուտեստներ։ Specialty coffee Մոնպելիեում, շուտով կբացվի։",
       },
       academie: {
         title: "Ակադեմիա",
         description:
-          "CELSIUS Ակադեմիա՝ cupping, մեղմ եփման մեթոդներ, latte art և առցանց դասընթաց։ Համտեսներ ու արհեստանոցներ սուրճի մշակույթը խորացնելու համար Փարիզում։",
+          "CELSIUS Ակադեմիա՝ cupping, մեղմ եփման մեթոդներ, latte art և առցանց դասընթաց։ Համտեսներ ու արհեստանոցներ սուրճի մշակույթը խորացնելու համար Մոնպելիեում։",
       },
       boutique: {
         title: "Խանութ",
         description:
-          "CELSIUS խանութ՝ հատիկավոր սուրճ, Hario և Fellow պարագաներ, մերչ և գրքեր։ Lifestyle ընտրանի, որը կհայտնվի բացումից հետո Փարիզում։",
+          "CELSIUS խանութ՝ հատիկավոր սուրճ, Hario և Fellow պարագաներ, մերչ և գրքեր։ Lifestyle ընտրանի, որը կհայտնվի բացումից հետո Մոնպելիեում։",
       },
       aPropos: {
         title: "Մեր մասին",
         description:
-          "CELSIUS՝ specialty coffee սրճարան Փարիզում. մեր պատմությունը, համի հանդեպ մոտեցումը և Victoriia Nikolenko՝ նախագծի հիմնադիր և ղեկավար։",
+          "CELSIUS՝ specialty coffee սրճարան Մոնպելիեում. մեր պատմությունը, համի հանդեպ մոտեցումը և Victoriia Nikolenko՝ նախագծի հիմնադիր և ղեկավար։",
       },
       contact: {
         title: "Կապ",
         description:
-          "Կապնվեք CELSIUS-ի հետ՝ specialty coffee սրճարան Փարիզում։ Հասցեն կհայտարարվի շուտով — բացումը առջևում է։",
+          "Կապնվեք CELSIUS-ի հետ՝ specialty coffee սրճարան Մոնպելիեում։ Հասցեն կհայտարարվի շուտով — բացումը առջևում է։",
       },
       mentionsLegales: {
         title: "Իրավական տեղեկություններ",
@@ -96,7 +96,7 @@ export const hy: Dict = {
   home: {
     heroCta1: "Տեսնել ճաշացանկը",
     heroCta2: "Ակադեմիա",
-    heroSubtitle: "Specialty coffee · Փարիզ",
+    heroSubtitle: "Specialty coffee · Մոնպելիե",
     pillarsTitle: "Մեկ գաղափար, չորս սյուն",
     pillars: {
       sommelier: {

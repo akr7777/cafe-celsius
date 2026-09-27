@@ -12,7 +12,7 @@ const config: Config = {
   // Overridden per-locale by pages/+onBeforeRender.ts and, where a page needs
   // something more specific, by that page's own +data.ts.
   title: "CELSIUS",
-  description: "CELSIUS — café de spécialité, Paris.",
+  description: "CELSIUS — café de spécialité, Montpellier.",
 
   extends: [vikeReact],
 };

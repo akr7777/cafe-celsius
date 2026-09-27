@@ -9,7 +9,7 @@ export default function Page() {
     <section className="mx-auto max-w-xl px-4 py-16">
       <h1 className="font-heading text-3xl font-bold sm:text-4xl">{t("nav.contact")}</h1>
       <p className="text-muted-foreground mt-3">
-        {t("common.openingSoonParis")} {t("contact.addressSoon")}
+        {t("common.openingSoonCity")} {t("contact.addressSoon")}
       </p>
 
       <div className="mt-10">

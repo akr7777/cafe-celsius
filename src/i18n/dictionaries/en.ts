@@ -3,7 +3,7 @@ import type { Dict } from "./fr";
 export const en: Dict = {
   common: {
     openingSoon: "Opening soon",
-    openingSoonParis: "Opening soon in Paris",
+    openingSoonCity: "Opening soon in Montpellier",
     skipToContent: "Skip to content",
     priceOnRequest: "On request",
     comingSoon: "Coming soon",
@@ -25,7 +25,7 @@ export const en: Dict = {
     close: "Close",
   },
   footer: {
-    tagline: "Specialty coffee · Paris",
+    tagline: "Specialty coffee · Montpellier",
     legalMentions: "Legal notice",
     privacy: "Privacy",
     rights: "© {{year}} EURL CELSIUS",
@@ -46,34 +46,34 @@ export const en: Dict = {
   },
   meta: {
     titleTemplate: "%s · CELSIUS",
-    defaultTitle: "CELSIUS — Specialty coffee, Paris",
+    defaultTitle: "CELSIUS — Specialty coffee, Montpellier",
     defaultDescription:
-      "CELSIUS, a specialty coffee shop in Paris: menu, coffee academy and shop. Opening soon.",
+      "CELSIUS, a specialty coffee shop in Montpellier: menu, coffee academy and shop. Opening soon.",
     pages: {
       carte: {
         title: "Menu",
         description:
-          "Explore the CELSIUS menu: espresso, tastings, cold drinks, signatures, homemade sweets and savoury dishes. Specialty coffee in Paris, opening soon.",
+          "Explore the CELSIUS menu: espresso, tastings, cold drinks, signatures, homemade sweets and savoury dishes. Specialty coffee in Montpellier, opening soon.",
       },
       academie: {
         title: "The Academy",
         description:
-          "The CELSIUS Academy: cupping, slow brewing, latte art and an online course. Tastings and workshops to go deeper into coffee culture in Paris.",
+          "The CELSIUS Academy: cupping, slow brewing, latte art and an online course. Tastings and workshops to go deeper into coffee culture in Montpellier.",
       },
       boutique: {
         title: "Shop",
         description:
-          "The CELSIUS shop: whole beans, Hario and Fellow gear, merch and books. A lifestyle selection to discover when we open, in Paris.",
+          "The CELSIUS shop: whole beans, Hario and Fellow gear, merch and books. A lifestyle selection to discover when we open, in Montpellier.",
       },
       aPropos: {
         title: "About",
         description:
-          "CELSIUS, a specialty coffee shop in Paris: our story, our approach to taste, and Victoriia Nikolenko, the project's founder and manager.",
+          "CELSIUS, a specialty coffee shop in Montpellier: our story, our approach to taste, and Victoriia Nikolenko, the project's founder and manager.",
       },
       contact: {
         title: "Contact",
         description:
-          "Contact CELSIUS, a specialty coffee shop in Paris. Address to be announced soon — opening coming up.",
+          "Contact CELSIUS, a specialty coffee shop in Montpellier. Address to be announced soon — opening coming up.",
       },
       mentionsLegales: {
         title: "Legal notice",
@@ -95,7 +95,7 @@ export const en: Dict = {
   home: {
     heroCta1: "Discover the menu",
     heroCta2: "The Academy",
-    heroSubtitle: "Specialty coffee · Paris",
+    heroSubtitle: "Specialty coffee · Montpellier",
     pillarsTitle: "One idea, four pillars",
     pillars: {
       sommelier: {

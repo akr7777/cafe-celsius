@@ -14,7 +14,7 @@ export function Footer() {
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
           <div>
             <Logo />
-            <p className="text-muted-foreground mt-1 text-sm">{t("common.openingSoonParis")}</p>
+            <p className="text-muted-foreground mt-1 text-sm">{t("common.openingSoonCity")}</p>
           </div>
           <SocialLinks />
         </div>
